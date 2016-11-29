@@ -4,6 +4,8 @@ mkdir $workserver_path
 cp workserver.py $workserver_path
 
 # install python3-bottle 
+apt-get install python-pip python-dev build-essential 
+pip install --upgrade pip
 apt-get -y update
 apt-get -y install python3-bottle
 pip install azure

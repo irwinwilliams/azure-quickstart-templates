@@ -10,11 +10,6 @@ curl -sS https://getcomposer.org/installer | php
 
 cd /var/www/html
 wget https://raw.githubusercontent.com/irwinwilliams/azure-quickstart-templates/101-vm-simple-linux-withphp/master/index.php
-#if you need composer, enable these lines
-#wget https://raw.githubusercontent.com/jairaj007/Assignment3/master/composer.json
-#wget https://raw.githubusercontent.com/jairaj007/Assignment3/master/do_work.php
-#wget http://getcomposer.org/composer.phar
-#php composer.phar install
 rm /var/www/html/index.html
 
 apachectl restart

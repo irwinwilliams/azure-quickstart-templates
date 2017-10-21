@@ -3,10 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
-      "value": "GEN-UNIQUE"
+      "value": "azureuser"
     },
     "adminPassword": {
-      "value": "GEN-PASSWORD"
+      "value": "Azure4Research!"
     }
   }
 }

@@ -1,6 +1,6 @@
 ### Autoscale demo app on Ubuntu 16.04 ###
 
-Simple self-contained Ubuntu autoscale example which includes a Python Bottle server to do work. The VM Scale Set scales up when average CPU across all VMs > 60%, scales down when avg CPU < 30%.
+Simple self-contained Ubuntu autoscale example which includes a Python Bottle server to do work. The VM Scale Set scales up when number of messages on a given service bus queue is more than 10 and scales down when the number of messages get to less than 5.
 
 - Deploy the scale set with an instance count of 1 
 - After it is deployed look at the resource group public IP address resource (in portal or resources explorer). Get the IP or domain name.

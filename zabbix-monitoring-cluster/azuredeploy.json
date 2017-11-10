@@ -35,6 +35,17 @@
         "description": "Name for the monitor VM. This would become part of the fully qualified domain name for monitor VM, thus it should be globally unique."
       }
     },
+    "monitorVmDistro": {
+      "type": "string",
+      "metadata": {
+        "description": "Distro type for the monitor VM."
+      },
+      "allowedValues": [
+        "Ubuntu",
+        "CentOS"
+      ],
+      "defaultValue": "Ubuntu"
+    },
     "monitorVmUsername": {
       "type": "string",
       "metadata": {
@@ -48,12 +59,22 @@
         "description": "Monitor VM password."
       }
     },
+    "mysqlServerType": {
+      "type": "string",
+      "metadata": {
+        "description": "MySql Server type. 'Localhost' for creating a new MySQL instance on the monitor VM, 'existing' for using an existing host."
+      },
+      "allowedValues": [
+        "Existing", "Localhost"
+      ],
+      "defaultValue": "Localhost"
+    },
     "mysqlHost": {
       "type": "string",
       "metadata": {
-        "description": "Monitoring service backend MySQL host. Using 'localhost' here will set up a new MySQL instance on the monitor VM."
+        "description": "Monitoring service backend MySQL host, only needed when 'mysqlServerType' is set to 'existing'."
       },
-      "defaultValue": "localhost"
+      "defaultValue": ""
     },
     "mysqlDbName": {
       "type": "string",
@@ -136,11 +157,17 @@
           "monitorVmName": {
             "value": "[parameters('monitorVmName')]"
           },
+          "monitorVmDistro": {
+            "value": "[parameters('monitorVmDistro')]"
+          },
           "monitorVmUsername": {
             "value": "[parameters('monitorVmUsername')]"
           },
           "monitorVmPassword": {
             "value": "[parameters('monitorVmPassword')]"
+          },
+          "mysqlServerType": {
+            "value": "[parameters('mysqlServerType')]"
           },
           "mysqlHost": {
             "value": "[parameters('mysqlHost')]"

@@ -1,20 +1,18 @@
 # Create Splunk Enterprise standalone or cluster on Azure
 
 **US Government Cloud**
-<br>
-[Deploy to Azure Government Cloud](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsplunk-on-ubuntu%2Fazuredeploy-gov.json "Deploy to Azure Government Cloud")
-<br><br>
+
+[![Deploy to Azure Gov](https://azuredeploy.net/AzureGov.png)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fsplunk-on-ubuntu%2Fazuredeploy-gov.json)
+
 **NOTE regarding deployment to US Government Cloud**
-<br>
-The template system that deploys to US Government Cloud is largely identical to that for the public cloud. If launched using the "Deploy to Azure Government Cloud" link above, the **standalone** deployment type is executed. To deploy using the **cluster** deployment type in US Government cloud, tailor the templates to your needs and use the Azure CLI to launch. To deploy to the US Government Cloud, your Azure subscription must be whitelisted for that purpose.
+
+The template system that deploys to US Government Cloud is largely identical to that for the public cloud. If launched using the "Deploy to Azure Gov" button above, the **standalone** and **cluster** deployment types are available but without as many configuration options in the UI as the public cloud. To gain access to the additional configuration options, tailor the templates to your needs and use the Azure CLI to launch. Deployment to the US Government Cloud requires your Azure subscription to be whitelisted for that purpose.
 
 **Public Cloud**
-<br>
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsplunk-on-ubuntu%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
-</a>
 
-This template deploys Splunk Enterprise 6.4 on Azure as either **standalone** instance or distributed **cluster** (up to 20 indexers). Each instance has eight (8) 1-TB data drives in RAID0 configuration. The template also provisions a storage account, a virtual network with subnets, public IP address, and all network interfaces & security groups required.
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsplunk-on-ubuntu%2Fazuredeploy.json)
+
+This template deploys Splunk Enterprise 6.6 on Azure as either **standalone** instance or distributed **cluster** (up to 20 indexers). Each instance has eight (8) 1-TB data drives in RAID0 configuration. The template also provisions a storage account, a virtual network with subnets, public IP address, and all network interfaces & security groups required.
 
 Once the deployment is complete, Splunk Enterprise can be accessed using the configured DNS address. The DNS address will include the `domainNamePrefix` and `location` entered as parameters in the format `{domainNamePrefix}.{location}.cloudapp.azure.com`. If you created a deployment with `domainNamePrefix` parameter set to "splunk" in the West US region, then Splunk Enterprise can be accessed at `https://splunk.westus.cloudapp.azure.com`.
 
@@ -30,6 +28,7 @@ Below is the list of template parameters:
 | clusterSearchheadVmSize | | VM Size of cluster search head. Applicable for `Cluster` deployment type |
 | clusterIndexerVmSize | | VM Size of cluster indexer. Applicable for `Cluster` deployment type |
 | clusterIndexerVmCount | | Count of indexers. Integer between 3 and 20. Defaults to 3 |
+| clusterSecret | | Secret shared among cluster nodes to authenticate communication between the master, the peers and search heads |
 | adminUsername | :heavy_check_mark: | Admin username for the VMs |
 | adminPassword | :heavy_check_mark: | Admin password for the VMs |
 | splunkAdminPassword | :heavy_check_mark: | Password for Splunk admin user |
